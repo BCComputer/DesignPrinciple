@@ -1,0 +1,66 @@
+ 1.  S -> Single Responsibility Principle (SRP)
+        The single responsibility principle states that every java class must perform a single
+        functionality. Implementation of multiple functionalities in a single class mashup the code.
+        e.g. In the srp_1 package problem section, there is BankService class. In the bank service class
+        there are multiple methods are exist such as getLoanInterestInfo(), sentOTP(), deposit(), printPassBook() etc.
+        This class has multiple responsibility which break the single responsibility principle. For this solution
+        in the srp_1 package solution package. Only bank service related responsibility is in the BankService which is deposit() and
+        withdraw(). The other responsibilities are devided into Loan service, Notifaction serice and Printer Service.
+
+    2.  O -> Open/Closed Principle (OCP)
+        The open-closed principle states that according to new requirements the module should be
+         Open for extension for closed for modification.
+         e.g.
+         interface NotificationService - sendOTP(String medium), sendTransactionReport(String medium)
+         -> MobileNotificationService implements NotificationService
+         -> EmailNotificationService implements NotificationService
+         -> WhatsAppNotificationService implements NotificationService
+
+        -- Create common NotificationService -> common functionality
+        -- Create EmailNotificationService extends/implements NotificationService
+        -- Create MobileNotificationService extends /implements NotificationService
+
+    3.  L -> Liskov Substitution Principle (LSP)
+        It applies to inheritance in such a way that the derived classes must be
+        completely substitutable for their base classes. In other words, if Class A
+        is a subtype of class B, then we should be able to replace B with A without
+        interrupting the behaviour of the program.
+         Every subclass or deriveded class should be substituable base or parents class.
+
+        In the lsp_3-problem package, there is abstract class SocialMedia which has four abstract methods.
+
+        -Support WhatsApp, Facebook, Instagram
+        public abstract void chatWithFriend();
+
+        //We can say that Facebook is substitute with SocialMedia Because
+        //All the functionalities that parents and child substitute each other
+
+        -Support Facebook, Instagram
+        public abstract void publishPost(Object post);
+
+        -Support WhatsApp, Facebook, Instagram
+        public abstract void sendPhotosAndVideos();
+
+        -Support WhatsApp, Facebook
+        public abstract void groupVideoCall(String users);
+
+        Solution:
+        Instead of creating one abstract class SocialMedia, we can create multiple abstract/interface which
+        later we can implement those abstract/interface only supported media.
+
+
+    4.  I -> Interface Segregation Principle (ISP)
+        The principle states that the larger interfaces split into smaller ones.
+        Because the implementation classes use only the methods that are required.
+        We should not force the client to use the methods that they do not want to use.
+        The goal of the interface segregation principle is similar to the single responsibility Principle.
+
+        In other word,
+        larger interfaces should be split into smaller ones. By doing so, we can ensure that
+        implementing classes only need to be concerned about the methods that are of interest to them.
+
+    5.  D-> Dependency Inversion Principle (DIP)
+        The principle states that we must use abstraction (abstract classes and interfaces)
+        instead of concrete implementations. High-leve modules should not depend on the
+        low-level module but both should depend on the abstraction.
+        In other word, Classes or Components should depend on Abstraction, not on Concreation.
